@@ -21,7 +21,7 @@
                         <div id="body">
                             <form id="insert" @submit="e => insert(e)">
                                 #inputInsert#
-                                <div className="mb-3">
+                                <div class="mb-3">
                                     <Button variant="primary" type= "submit" >
                                         Insert
                                     </Button>
@@ -67,7 +67,7 @@
             <div id="body">
                 <form id="update" @submit="e => update(e)" v-if="updateForm">
                     #inputUpdate#
-                    <div className="mb-3">
+                    <div class="mb-3">
                         <Button class="btn btn-primary" type= "submit" >
                             Update
                         </Button>
@@ -81,7 +81,7 @@
             <h2>Delete #entity#</h2>
             <div id="body">
                 <form id="delete" @submit="del()" v-if="deleteForm">
-                    <div className="mb-3">
+                    <div class="mb-3">
                         <Button class="btn btn-danger" type= "submit" >
                             Delete
                         </Button>
@@ -103,7 +103,7 @@
         },
         data(){
             return {
-                url: '#url#',
+                url: '#url#/',
                 items: null,
                 targetItem: null,
                 insertForm: false,
