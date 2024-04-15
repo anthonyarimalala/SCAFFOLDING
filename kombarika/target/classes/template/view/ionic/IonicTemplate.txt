@@ -1,0 +1,126 @@
+<template>
+  <ion-page>
+    <ion-header>
+      <ion-toolbar>
+        <ion-title>#entity#</ion-title>
+      </ion-toolbar>
+    </ion-header>
+
+    <ion-content :class="{ 'ion-padding': loading }">
+      <div v-if="loading">
+        Loading ...
+      </div>
+      <!-- Insert start -->
+      <div class="ion-margin">
+        <!-- Add button -->
+        <ion-button color="primary" @click="handleShow()">
+          Add #entity#
+        </ion-button>
+
+        <!-- Insert modal -->
+        <ion-modal :show="show" @dismiss="handleClose()">
+          <ion-header>
+            <ion-toolbar>
+              <ion-title>Add #entity#</ion-title>
+              <ion-buttons slot="end">
+                <ion-button @click="handleClose()">
+                  <ion-icon slot="icon-only" name="close"></ion-icon>
+                </ion-button>
+              </ion-buttons>
+            </ion-toolbar>
+          </ion-header>
+          <ion-content>
+            <form @submit.prevent="handleSaveSubmit">
+              #inputInsert#
+              <ion-button type="submit" expand="block" color="primary">
+                Save Changes
+              </ion-button>
+            </form>
+          </ion-content>
+        </ion-modal>
+      </div>
+      <!-- Insert end -->
+
+      <!-- List -->
+      <ion-list>
+        <ion-item v-for="item in #path#" :key="item.#id#">
+          #tableValue#
+          <ion-button @click="handleDeleteClick(item)" color="danger" slot="end">
+            Delete
+          </ion-button>
+          <ion-button @click="handleSelectItem(item.#id#)" color="warning" slot="end">
+            Update
+          </ion-button>
+        </ion-item>
+      </ion-list>
+
+      <!-- Update modal -->
+      <ion-modal :show="show2" @dismiss="handleClose2()">
+        <ion-header>
+          <ion-toolbar>
+            <ion-title>Update #entity#</ion-title>
+            <ion-buttons slot="end">
+              <ion-button @click="handleClose2()">
+                <ion-icon slot="icon-only" name="close"></ion-icon>
+              </ion-button>
+            </ion-buttons>
+          </ion-toolbar>
+        </ion-header>
+        <ion-content>
+          <form @submit.prevent="handleUpdateSubmit">
+            #inputUpdate#
+            <ion-button type="submit" expand="block" color="warning">
+              Save Changes
+            </ion-button>
+          </form>
+        </ion-content>
+      </ion-modal>
+    </ion-content>
+  </ion-page>
+</template>
+
+<script>
+import { defineComponent, ref } from 'vue';
+
+export default defineComponent({
+  name: '#entity#',
+  data() {
+    return {
+      url: '#url#',
+      items: null,
+      show: false,
+      show2: false,
+      loading: false,
+      selectedItem: null,
+      #values#
+    };
+  },
+  methods: {
+    handleShow() {
+      this.show = true;
+    },
+    handleClose() {
+      this.show = false;
+    },
+    handleSaveSubmit() {
+      // Your save submit logic
+    },
+    handleSelectItem(itemId) {
+      // Your select item logic
+    },
+    handleDeleteClick(item) {
+      // Your delete click logic
+    },
+    handleUpdateSubmit() {
+      // Your update submit logic
+    },
+    handleClose2() {
+      this.show2 = false;
+    },
+  },
+});
+</script>
+
+<style scoped>
+/* Your scoped styles */
+</style>
