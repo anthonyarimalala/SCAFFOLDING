@@ -95,6 +95,7 @@
 
 <script>
     import { Modal } from 'usemodal-vue3';
+    import axios from 'axios';
     
     export default{
         name: '#entity#',
@@ -119,38 +120,24 @@
         },
         methods: {
             async getAll() {
-                /*try {
-                    this.loading = true;
-                    const response = await fetch(this.url + '#path#');
-                    if (!response.ok) {
-                        throw new Error('Erreur réseau');
-                    }
-                    const data = await response.json();
-                    this.items = data;
-                    this.loading = false;
+                try {
+                    const response = await axios.get(this.url + 'personne');
+                    this.personne = response.data;
                 } catch (error) {
-                    if(this.loading) this.loading = false;
+                    if (this.loading) this.loading = false;
                     alert(error);
-                }*/
-                try{
-                    #getValues#
-                }catch (error) {
-                    if(this.loading) this.loading = false;
-                    alert(error);
-                }   
+                }
             },
             async update(event) {
                 event.preventDefault();
                 const updateData = this.fetchFormData(event.target);
                 try {
-                    const response = await fetch(this.url + '#path#', {
-                        method: 'PUT',
+                    const response = await axios.put(this.url + '#path#', updateData, {
                         headers: {
                             'Content-Type': 'application/json'
-                        },
-                        body: JSON.stringify(updateData)
+                        }
                     });
-                    if (!response.ok) {
+                    if (response.status !== 200) {
                         throw new Error('Erreur réseau');
                     }
                     this.updateForm = false;
@@ -161,14 +148,13 @@
             },
             async del() {
                 try {
-                    const response = await fetch(this.url + '#path#', {
-                        method: 'DELETE',
+                    const response = await axios.delete(this.url + '#path#', {
                         headers: {
-                            'Content-Type': 'application/json',
+                            'Content-Type': 'application/json'
                         },
-                        body: JSON.stringify(this.targetItem)
+                        data: this.targetItem
                     });
-                    if (!response.ok) {
+                    if (response.status !== 200) {
                         throw new Error('Erreur réseau');
                     }
                     this.deleteForm = false;
@@ -181,14 +167,12 @@
                 event.preventDefault();
                 const insertData = this.fetchFormData(event.target);
                 try {
-                    const response = await fetch(this.url + '#path#', {
-                        method: 'POST',
+                    const response = await axios.post(this.url + '#path#', insertData, {
                         headers: {
                             'Content-Type': 'application/json'
-                        },
-                        body: JSON.stringify(insertData)
+                        }
                     });
-                    if (!response.ok) {
+                    if (response.status !== 200) {
                         throw new Error('Erreur réseau');
                     }
                     console.log("Réponse", response);

@@ -146,7 +146,7 @@
         "vue": {
             "CLIGenerator":"cd #path# && mkdir #projectName# && cd #projectName# && npx create-react-app",
             "inputInsert":"<div class=\"mb-3\"> \n \t<label class=\"form-label\">#label#</label> \n \t<input class=\"form-control\" type=\"#type#\" name=\"#name#\" />\n</div>",
-            "inputUpdate":"<div class=\"mb-3\"> \n \t<label class=\"form-label\">#label#</label> \n \t<input class=\"form-control\" type=\"#type#\" name=\"#name#\" />\n</div>",
+            "inputUpdate":"<div class=\"mb-3\"> \n \t<label class=\"form-label\">#label#</label> \n \t<input class=\"form-control\" type=\"#type#\" name=\"#name#\" v-model=\"targetItem.#name#\" />\n</div>",
             "select":"<div class=\"mb-3\"> \n \t<label class=\"form-label\">#label#</label> \n \t<select class=\"form-control\" name=\"#name#\" id=\"select-#name#\">\n#option#\n\t</select>\n</div>",
             "selectUpdate":"<div class=\"mb-3\"> \n \t<label class=\"form-label\">#label#</label> \n \t<select class=\"form-control\" name=\"#name#\">\n\t#optionUpdate#\n</select>\n</div>",
             "option":"<option v-for='elt in #path#' :key='elt.#id#' :value='elt.#id#'>{{elt.#attribute#}}</option>\n\n",
